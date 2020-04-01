@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DIAGRAM DIAGRAMTYPE="Conceptual" FILE_VERSION="2" ZOOM="100" SCROLLH="0" SCROLLV="0" PAPERID="1" PAPERORIENTATION="0">
+    <OPTIONS OPTION0="OPT_VIEW_DISPLAY_LINK_NAMES_IN_DGR=1">
+    </OPTIONS>
+    <ITEMS>
+        <DOMAINS>
+        </DOMAINS>
+        <ENTITIES>
+            <ENTITY ID="{E6D519BB-ADE9-4840-A01A-194113CB69FE}" NAME="questionnaire" NOTE="Tablica przechowująca informację o ankietach">
+                <ATTRIBUTES>
+                    <ATTRIBUTE NAME="id" DT="Integer" ISID="1" ORDER="0">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="title" DT="Variable length string" DTL="255" ORDER="1">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="start_time" DT="Date &amp; Time" ORDER="2">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="end_time" DT="Date &amp; Time" ORDER="3">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="creator_id" DT="Integer" ORDER="4">
+                    </ATTRIBUTE>
+                </ATTRIBUTES>
+                <VPROPS>
+                    <FONT FCOLHEADER="16777215">
+                    </FONT>
+                    <COLORS FCLR="16579836" OLCLR="0" HDRCLR="10789024">
+                    </COLORS>
+                    <POS POS="640,40">
+                    </POS>
+                </VPROPS>
+            </ENTITY>
+            <ENTITY ID="{9EB10F16-EB32-4E53-815F-7634E34CC942}" NAME="questionnaire_answers">
+                <ATTRIBUTES>
+                    <ATTRIBUTE NAME="id" DT="Integer" ISID="1" ORDER="0">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="questionnaire_id" DT="Integer" ORDER="1">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="quest_id" DT="Integer" ORDER="2">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="quest_answers_id" DT="Integer" ORDER="3">
+                    </ATTRIBUTE>
+                </ATTRIBUTES>
+                <VPROPS>
+                    <FONT FCOLHEADER="16777215">
+                    </FONT>
+                    <COLORS FCLR="16579836" OLCLR="0" HDRCLR="10789024">
+                    </COLORS>
+                    <POS POS="1056,200">
+                    </POS>
+                </VPROPS>
+            </ENTITY>
+            <ENTITY ID="{0971FABA-574F-4FF1-8B74-E811AD981BC2}" NAME="questionnaire_quests" NOTE="Tablica przechowuje informacje o pytaniach w ankiecie">
+                <ATTRIBUTES>
+                    <ATTRIBUTE NAME="id" DT="Integer" ISID="1" ORDER="0">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="questionnaire_id" DT="Integer" ORDER="1">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="question" DT="Variable length string" DTL="255" ORDER="2">
+                    </ATTRIBUTE>
+                </ATTRIBUTES>
+                <VPROPS>
+                    <FONT FCOLHEADER="16777215">
+                    </FONT>
+                    <COLORS FCLR="16579836" OLCLR="0" HDRCLR="10789024">
+                    </COLORS>
+                    <POS POS="632,240">
+                    </POS>
+                </VPROPS>
+            </ENTITY>
+            <ENTITY ID="{4C465950-3C89-4FE2-AE70-A285FD9B3DAA}" NAME="questionnaire_quests_answers" NOTE="Tablica przechowująca informację o możliwych odpowiedziach na poszczególne pytania">
+                <ATTRIBUTES>
+                    <ATTRIBUTE NAME="id" DT="Integer" ISID="1" ORDER="0">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="quest_id" DT="Integer" ORDER="1">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="value" DT="Variable length string" DTL="255" ORDER="2">
+                    </ATTRIBUTE>
+                </ATTRIBUTES>
+                <VPROPS>
+                    <FONT FCOLHEADER="16777215">
+                    </FONT>
+                    <COLORS FCLR="16579836" OLCLR="0" HDRCLR="10789024">
+                    </COLORS>
+                    <POS POS="640,392">
+                    </POS>
+                </VPROPS>
+            </ENTITY>
+            <ENTITY ID="{D411A7FC-99DC-4F12-A79C-87BC41D8F799}" NAME="users" NOTE="Tablica przechowująca informację o użytkownikach">
+                <ATTRIBUTES>
+                    <ATTRIBUTE NAME="id" DT="Integer" ISID="1" ORDER="0">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="email" DT="Variable length string" DTL="50" ORDER="1">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="password" DT="Variable length string" DTL="50" ORDER="2">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="first_name" DT="Variable length string" DTL="50" ORDER="3">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="last_name" DT="Variable length string" DTL="50" ORDER="4">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="role_id" DT="Integer" ORDER="5">
+                    </ATTRIBUTE>
+                </ATTRIBUTES>
+                <VPROPS>
+                    <FONT FCOLHEADER="16777215">
+                    </FONT>
+                    <COLORS FCLR="16579836" OLCLR="0" HDRCLR="10789024">
+                    </COLORS>
+                    <POS POS="208,208">
+                    </POS>
+                </VPROPS>
+            </ENTITY>
+            <ENTITY ID="{EB552BF4-8F3A-4D37-AAFF-E70B38CAEFB0}" NAME="user_answers" NOTE="Tablica przechowuje informację o ankietach, na jakie odpowiedział użytkownik">
+                <ATTRIBUTES>
+                    <ATTRIBUTE NAME="id" DT="Integer" ISID="1" ORDER="0">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="user_id" DT="Integer" ORDER="1">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="questionnaire_id" DT="Integer" ORDER="2">
+                    </ATTRIBUTE>
+                </ATTRIBUTES>
+                <VPROPS>
+                    <FONT FCOLHEADER="16777215">
+                    </FONT>
+                    <COLORS FCLR="16579836" OLCLR="0" HDRCLR="10789024">
+                    </COLORS>
+                    <POS POS="168,40">
+                    </POS>
+                </VPROPS>
+            </ENTITY>
+            <ENTITY ID="{4FD3D547-00BB-4968-B908-A4D2014BC64D}" NAME="user_role" NOTE="Tablica przechowująca informację o rolach użytkowników">
+                <ATTRIBUTES>
+                    <ATTRIBUTE NAME="id" DT="Integer" ISID="1" ORDER="0">
+                    </ATTRIBUTE>
+                    <ATTRIBUTE NAME="name" DT="Variable length string" DTL="50" ORDER="1">
+                    </ATTRIBUTE>
+                </ATTRIBUTES>
+                <VPROPS>
+                    <FONT FCOLHEADER="16777215">
+                    </FONT>
+                    <COLORS FCLR="16579836" OLCLR="0" HDRCLR="10789024">
+                    </COLORS>
+                    <POS POS="24,400">
+                    </POS>
+                </VPROPS>
+            </ENTITY>
+        </ENTITIES>
+        <RELATIONSHIPS>
+            <RELATIONSHIP NAME="users.role_id &lt;-&gt; user_role.id" ID="{72D063FB-109B-4519-A9DC-718505B21ABD}" SREQ="1" DREQ="1" IDENT="1" CARD="2" SENT="{D411A7FC-99DC-4F12-A79C-87BC41D8F799}" DENT="{4FD3D547-00BB-4968-B908-A4D2014BC64D}">
+                <SATTRS 0="role_id">
+                </SATTRS>
+                <DATTRS 0="id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="user_answers.questionnaire_id &lt;-&gt; questionnaire.id" ID="{80633635-72D2-4DC9-A80F-76B88395D87E}" SREQ="1" DREQ="1" IDENT="1" CARD="2" SENT="{EB552BF4-8F3A-4D37-AAFF-E70B38CAEFB0}" DENT="{E6D519BB-ADE9-4840-A01A-194113CB69FE}">
+                <SATTRS 0="questionnaire_id">
+                </SATTRS>
+                <DATTRS 0="id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="user_answers.user_id &lt;-&gt; users.id" ID="{88D0CDBC-6D89-4A14-976A-63696B7120C0}" SREQ="1" DREQ="1" IDENT="1" CARD="2" SENT="{EB552BF4-8F3A-4D37-AAFF-E70B38CAEFB0}" DENT="{D411A7FC-99DC-4F12-A79C-87BC41D8F799}">
+                <SATTRS 0="user_id">
+                </SATTRS>
+                <DATTRS 0="id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="questionnaire.id &lt;-&gt; questionnaire_quests.questionnaire_id" ID="{88B781C9-5198-4709-8208-76B8151DD979}" SREQ="1" DREQ="1" IDENT="1" CARD="2" SENT="{0971FABA-574F-4FF1-8B74-E811AD981BC2}" DENT="{E6D519BB-ADE9-4840-A01A-194113CB69FE}">
+                <SATTRS 0="questionnaire_id">
+                </SATTRS>
+                <DATTRS 0="id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="questionnaire.creator_id &lt;-&gt; users.id" ID="{C1B95168-579A-444B-8BD2-5FE90506A67E}" SREQ="1" DREQ="1" IDENT="1" CARD="2" SENT="{E6D519BB-ADE9-4840-A01A-194113CB69FE}" DENT="{D411A7FC-99DC-4F12-A79C-87BC41D8F799}">
+                <SATTRS 0="creator_id">
+                </SATTRS>
+                <DATTRS 0="id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="New_Relationship5" ID="{F7F395C6-A3AD-4FC9-A1CD-700203DCD069}" IDENT="1" CARD="0" SENT="{0971FABA-574F-4FF1-8B74-E811AD981BC2}" DENT="{0971FABA-574F-4FF1-8B74-E811AD981BC2}">
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="questionnaire_quests.id &lt;-&gt; questionnaire_quests_answers" ID="{C47F1858-0A66-4094-ADC6-6FC7D7679DC4}" SREQ="1" DREQ="1" IDENT="1" CARD="2" SENT="{4C465950-3C89-4FE2-AE70-A285FD9B3DAA}" DENT="{0971FABA-574F-4FF1-8B74-E811AD981BC2}">
+                <SATTRS 0="quest_id">
+                </SATTRS>
+                <DATTRS 0="id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="questionnaire.id &lt;-&gt; questionnaire_answers.id" ID="{46EB9019-B9C1-43EC-8B2E-AA977D8DA37D}" SREQ="1" DREQ="1" IDENT="1" CARD="2" SENT="{9EB10F16-EB32-4E53-815F-7634E34CC942}" DENT="{E6D519BB-ADE9-4840-A01A-194113CB69FE}">
+                <SATTRS 0="questionnaire_id">
+                </SATTRS>
+                <DATTRS 0="id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="questionnaire_quests.id &lt;-&gt; questionnaire_answers.quest_id" ID="{6B3273D6-D822-49C1-BFA9-D7FEB57ACA70}" SREQ="1" DREQ="1" IDENT="1" CARD="1" SENT="{0971FABA-574F-4FF1-8B74-E811AD981BC2}" DENT="{9EB10F16-EB32-4E53-815F-7634E34CC942}">
+                <SATTRS 0="id">
+                </SATTRS>
+                <DATTRS 0="quest_id">
+                </DATTRS>
+            </RELATIONSHIP>
+            <RELATIONSHIP NAME="questionnaire_quests_answers.id &lt;-&gt; questionnaire_answers.quest_answers_id" ID="{8B7B962F-81EC-45F7-9DDC-75827BF35B87}" SREQ="1" DREQ="1" IDENT="1" CARD="1" SENT="{4C465950-3C89-4FE2-AE70-A285FD9B3DAA}" DENT="{9EB10F16-EB32-4E53-815F-7634E34CC942}">
+                <SATTRS 0="id">
+                </SATTRS>
+                <DATTRS 0="quest_answers_id">
+                </DATTRS>
+            </RELATIONSHIP>
+        </RELATIONSHIPS>
+        <LINKS>
+            <LINK SP="32,96" DP="16,32" OBJID="{72D063FB-109B-4519-A9DC-718505B21ABD}">
+            </LINK>
+            <LINK SP="128,8" DP="16,8" OBJID="{80633635-72D2-4DC9-A80F-76B88395D87E}">
+            </LINK>
+            <LINK SP="96,64" DP="56,8" OBJID="{88D0CDBC-6D89-4A14-976A-63696B7120C0}">
+            </LINK>
+            <LINK SP="96,16" DP="88,96" OBJID="{88B781C9-5198-4709-8208-76B8151DD979}">
+            </LINK>
+            <LINK SP="0,88" DP="177,24" OBJID="{C1B95168-579A-444B-8BD2-5FE90506A67E}">
+            </LINK>
+            <LINK SP="88,8" DP="96,64" OBJID="{C47F1858-0A66-4094-ADC6-6FC7D7679DC4}">
+            </LINK>
+            <LINK SP="8,40" DP="168,24" OBJID="{46EB9019-B9C1-43EC-8B2E-AA977D8DA37D}">
+            </LINK>
+            <LINK SP="200,24" DP="0,56" OBJID="{6B3273D6-D822-49C1-BFA9-D7FEB57ACA70}">
+            </LINK>
+            <LINK SP="176,24" DP="0,80" OBJID="{8B7B962F-81EC-45F7-9DDC-75827BF35B87}">
+            </LINK>
+        </LINKS>
+        <COMMENTS>
+        </COMMENTS>
+        <REGIONS>
+        </REGIONS>
+        <DOCLINKS>
+        </DOCLINKS>
+        <SUBDIAGRAMS>
+        </SUBDIAGRAMS>
+    </ITEMS>
+</DIAGRAM>
