@@ -23,6 +23,7 @@ Route::group([
         ]);
 
     Route::post('logout', 'AuthController@logout');
+    Route::get('questionnaires', 'QuestionnaireController@index');
 });
 
 Route::post('register', 'AuthController@register');

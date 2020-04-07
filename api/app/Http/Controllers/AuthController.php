@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\RegisterRequest;
 
-class AuthController extends RegisterRequest
+class AuthController extends ResponseController
 {
     public function register(RegisterRequest $request){
         $user = User::create([
