@@ -17,13 +17,11 @@ Route::group([
     'middleware' => 'auth.api'
 ], function () {
     Route::resources( [
-        /*
-            todo
-        */
+            'questionaires' => 'QuestionnaireController',
         ]);
 
     Route::post('logout', 'AuthController@logout');
-    Route::get('questionnaires', 'QuestionnaireController@index');
+    //Route::get('questionnaires', 'QuestionnaireController@index');
 });
 
 Route::post('register', 'AuthController@register');
