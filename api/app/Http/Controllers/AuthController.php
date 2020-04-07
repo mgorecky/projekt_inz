@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\RegisterRequest;
 
 class AuthController extends RegisterRequest
 {
-    public function register(Request $request){
+    public function register(RegisterRequest $request){
         $user = User::create([
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -21,7 +22,7 @@ class AuthController extends RegisterRequest
         return $this->respondWithToken($token);
     }
 
-    public function login(Request $request){
+    public function login(LoginRequest $request){
         $credentials = $request->only(['email', 'password']);
         if (!$token = auth()->attempt($credentials))
             return response()->json(
