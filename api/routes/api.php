@@ -17,7 +17,10 @@ Route::group([
     'middleware' => 'auth.api'
 ], function () {
     Route::resources( [
-    ]);
+        /*
+            todo
+        */
+        ]);
 
     Route::post('logout', 'AuthController@logout');
 });
