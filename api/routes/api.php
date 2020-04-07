@@ -17,7 +17,7 @@ Route::group([
     'middleware' => 'auth.api'
 ], function () {
     Route::resources( [
-            'questionaires' => 'QuestionnaireController',
+            'questionnaires' => 'QuestionnaireController',
         ]);
 
     Route::post('logout', 'AuthController@logout');
