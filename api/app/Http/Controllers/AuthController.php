@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Http\Requests\RegisterRequest;
 
-class AuthController extends ResponseController
+class AuthController extends Controller
 {
     public function register(Request $request){
         $user = User::create([
@@ -14,7 +13,7 @@ class AuthController extends ResponseController
             'password' => bcrypt($request->password),
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'role_id' => 2,
+            'role_id' => 1,
         ]);
 
         $token = auth()->login($user);
@@ -33,16 +32,18 @@ class AuthController extends ResponseController
     }
 
     public function getAuthUser(Request $request){
-        return $this->success(auth()->user());
+        return response()->json(auth()->user());
     }
 
     public function logout(){
         auth()->logout();
-        return $this->success('logged out');
+        return response()->json([
+            'message' => 'logged out'
+        ]);
     }
 
     protected function respondWithToken($token){
-        return $this->success([
+        return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
