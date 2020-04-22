@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\QuestionnaireQuests;
 use App\QuestionnaireQuestsAnswers;
+use App\UserAnswers;
 use Illuminate\Http\Request;
 
 use App\Questionnaire;
@@ -12,7 +13,21 @@ class QuestionnaireController extends ResponseController
 {
     public function index(){
         $questionaires = Questionnaire::orderBy('end_time', 'asc')->get();
-        return $this->success($questionaires);
+        $completedQuestionaires = UserAnswers::where('user_id', auth()->user()->id)->get();
+
+        $result = Array(
+            'questionaires'  => $questionaires,
+            'userAnswers' => [],
+        );
+
+        foreach($completedQuestionaires as $answer) {
+            array_push($result['userAnswers'], [
+                'questionaire_id' => $answer->questionnaire_id,
+                'created_at' => $answer->created_at->toDateTimeString(),
+            ]);
+        }
+
+        return $this->success($result);
     }
 
     public function show($questionnaireID){
