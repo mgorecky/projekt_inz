@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\QuestionnaireAnswers;
 use App\QuestionnaireQuests;
 use App\QuestionnaireQuestsAnswers;
 use App\UserAnswers;
@@ -56,10 +57,52 @@ class QuestionnaireController extends ResponseController
                 return $this->badRequest('no answers');
 
             foreach ($answers as $answer) {
-                array_push($resultArray['questions'][$index]['answers'], $answer->value);
+                array_push($resultArray['questions'][$index]['answers'], [
+                    "answer_id" => $answer->id,
+                    "value" => $answer->value,
+                ]);
             }
         }
 
         return $this->success($resultArray);
+    }
+
+    public function store(Request $request){
+        $data = json_decode($request->getContent(), true);
+
+        $questionnaire = Questionnaire::find($data['id']);
+        if (!$questionnaire)
+            return $this->badRequest('unknown questionnaire id');
+
+        foreach ($data['answers'] as $answer) {
+            $CheckAnswer = QuestionnaireQuests::where('id', $answer['quest_id'])->get();
+            if (!$CheckAnswer)
+                return $this->badRequest('unknown question id');
+
+            if ($CheckAnswer[0]['questionnaire_id'] != $data['id'])
+                return $this->badRequest('question from other questionnaire');
+
+            $CheckAnswer = QuestionnaireQuestsAnswers::where('id', $answer['answer_id'])->get();
+            if (!$CheckAnswer)
+                return $this->notFound('unknown answer id');
+
+            if ($CheckAnswer[0]['quest_id'] != $answer['quest_id'])
+                return $this->notFound('answer from other quest');
+        }
+
+        UserAnswers::create([
+            "user_id" => auth()->user()->id,
+            "questionnaire_id" => $data['id']
+        ]);
+
+        foreach ($data['answers'] as $answer) {
+            QuestionnaireAnswers::create([
+                "questionnaire_id" => $data['id'],
+                "quest_id" => $answer['quest_id'],
+                "quest_answers_id" => $answer['answer_id'],
+            ]);
+        }
+
+         return $this->success('answers saved');
     }
 }
