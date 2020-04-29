@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\JsonResponse;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CheckAdmin
 {
@@ -15,9 +17,21 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->role_id == UserRole::where('name', 'admin').get()->id)
+        $User = JWTAuth::User();
+        if (!$User)
+            return response()->json([
+                'status' => 'unauthorized',
+                '$code' => 401,
+                'message' => 'unauthorized',
+            ], JsonResponse::HTTP_UNAUTHORIZED);
+
+        if ($User->role_id == 1)
             return $next($request);
 
-        return redirect('api/questionnaires');
+        return response()->json([
+            'status' => 'unauthorized',
+            '$code' => 401,
+            'message' => 'unauthorized',
+        ], JsonResponse::HTTP_UNAUTHORIZED);
     }
 }
