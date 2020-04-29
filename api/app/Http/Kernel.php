@@ -41,6 +41,11 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'api.admin' => [
+            'auth.api',
+            'admin.api'
+        ],
     ];
 
     /**
@@ -58,5 +63,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'auth.api' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        'admin.api' => \App\Http\Middleware\CheckAdmin::class,
     ];
 }
