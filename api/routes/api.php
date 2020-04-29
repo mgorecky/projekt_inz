@@ -23,5 +23,13 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
 });
 
+Route::group([
+    'middleware' => 'admin.api'
+], function () {
+    Route::resources( [
+        'admin' => 'AdminController',
+    ]);
+});
+
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');

@@ -12,7 +12,7 @@ class Questionnaire extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'start_time', 'end_time'
+        'title', 'start_time', 'end_time', 'creator_id'
     ];
 
     /**
