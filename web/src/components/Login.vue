@@ -31,6 +31,9 @@
                     .then(response => response.json())
                     .then(result => {
                         localStorage.setItem('token', result.data.access_token);
+                        this.$router.push({
+                            path: '/questionnaires'
+                        })
                     })
             }
         }
