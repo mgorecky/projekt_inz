@@ -4,12 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import vueResource from 'vue-resource'
+import bootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
 Vue.use(vueResource)
+Vue.use(bootstrapVue)
 
 Vue.http.interceptors.push((request, next) => {
     if (localStorage.getItem('token')) {
