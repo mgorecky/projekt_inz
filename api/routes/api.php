@@ -20,7 +20,7 @@ Route::group([
         'questionnaires' => 'QuestionnaireController',
     ]);
 
-    Route::post('logout', 'AuthController@logout');
+    Route::get('logout', 'AuthController@logout');
 });
 
 Route::group([
