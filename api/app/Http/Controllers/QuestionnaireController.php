@@ -47,7 +47,7 @@ class QuestionnaireController extends ResponseController
 
         for ($index = 0; $index < $quests->count(); ++$index){
             array_push($resultArray['questions'], [
-                'id' => $index,
+                'id' => $quests[$index]->id,
                 'question' => $quests[$index]->question,
                 'answers' => [],
             ]);

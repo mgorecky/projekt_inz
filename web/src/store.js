@@ -59,6 +59,15 @@ const actions = {
                     path: '/login'
                 });
             });
+    },
+    fillquestionnaire({commit}, result) {
+        Vue.http.post('http://127.0.0.1:8000/api/questionnaires', result)
+            .then((response) => response.json())
+            .then((result) => {
+                router.push({
+                    path: '/questionnaires'
+                })
+            });
     }
 };
 

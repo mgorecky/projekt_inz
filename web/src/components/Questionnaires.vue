@@ -6,13 +6,36 @@
                 <th>Data rozpoczęcia</th>
                 <th>Data zakończenia</th>
                 <th>Wypełnij</th>
+                <th>Sprawdź</th>
             </tr>
 
             <tr v-for="questionnaire in this.data['questionaires']">
                 <td>{{questionnaire.title}}</td>
                 <td>{{questionnaire.start_time}}</td>
                 <td>{{questionnaire.end_time}}</td>
-                <td></td>
+                <td>
+                    <center>
+                        <div v-if="!CanFillDate(questionnaire.id) && CanFill(questionnaire.id)">
+                            <button class="btn btn-danger my-2 my-sm-0">Ankieta zamknięta</button>
+                        </div>
+                        <div v-else-if="CanFill(questionnaire.id)">
+                            <router-link v-bind:to="'/questionnaire/fill/'+questionnaire.id" class="btn btn-success my-2 my-sm-0">Wypełnij</router-link>
+                        </div>
+                        <div v-else>
+                            <button class="btn btn-danger my-2 my-sm-0">Wypełniona</button>
+                        </div>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <div v-if="CanCheck(questionnaire.id)">
+                            <button class="btn btn-danger my-2 my-sm-0">Brak odpowiedzi</button>
+                        </div>
+                        <div v-else>
+                            <button v-on:click="CheckQuestionnaire(questionnaire.id)" class="btn btn-success my-2 my-sm-0">Sprawdź odpowiedzi</button>
+                        </div>
+                    </center>
+                </td>
             </tr>
 
         </table>
@@ -20,6 +43,8 @@
 </template>
 
 <script>
+    import router from "../router";
+
     export default {
         name: 'questionnaires',
         data() {
@@ -31,7 +56,34 @@
             fetchQuestionnaires() {
                 this.$http.get('http://127.0.0.1:8000/api/questionnaires')
                     .then(response => response.json())
-                    .then(result => this.data = result.data)
+                    .then(result => this.data = result.data);
+            },
+            CanFillDate(id) {
+                for (var i = 0; i < this.data.questionaires.length; ++i){
+                    if (this.data.questionaires[i].id == id){
+                        if (this.data.questionaires[i].end_time > new Date().toJSON().slice(0, 19).replace('T', ' '))
+                            return true;
+                        return false;
+                    }
+                }
+                return true;
+            },
+            CanFill(id) {
+                for (var i = 0; i < this.data.userAnswers.length; ++i){
+                    if (this.data.userAnswers[i].questionaire_id == id)
+                        return false;
+                }
+                return true;
+            },
+            CheckQuestionnaire(id) {
+
+            },
+            CanCheck(id) {
+                for (var i = 0; i < this.data.userAnswers.length; ++i){
+                    if (this.data.userAnswers[i].questionaire_id == id)
+                        return false;
+                }
+                return true;
             }
         },
         created: function () {
