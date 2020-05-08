@@ -31,7 +31,7 @@
                 this.$store.dispatch('pageLogin');
             },
             register() {
-
+                this.$store.dispatch('pageRegister');
             }
         }
     }

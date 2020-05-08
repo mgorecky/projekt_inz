@@ -19,8 +19,8 @@ const getters = {
 };
 
 const actions = {
-    login({commit}, credential) {
-        Vue.http.post('http://127.0.0.1:8000/api/login', credential)
+    login({commit}, credentials) {
+        Vue.http.post('http://127.0.0.1:8000/api/login', credentials)
             .then((response) => response.json())
             .then((result) => {
                 localStorage.setItem('token', result.data.access_token);
@@ -45,6 +45,17 @@ const actions = {
         router.push({
             path: '/login'
         });
+    },
+    pageRegister() {
+        router.push({
+            path: '/register'
+        });
+    },
+    register({commit}, credential) {
+        Vue.http.post('http://127.0.0.1:8000/api/register', credential)
+            .then((response) => response.json())
+            .then((result) => {
+            });
     }
 };
 

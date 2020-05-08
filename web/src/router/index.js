@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 
 import Login from '@/components/Login'
 import Questionnaires from '@/components/Questionnaires'
+import Register from '@/components/Register'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
             path: '/questionnaires',
             name: 'questionnaires',
             component: Questionnaires
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: Register
         }
     ]
 })
