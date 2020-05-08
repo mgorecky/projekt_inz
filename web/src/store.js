@@ -40,6 +40,11 @@ const actions = {
                     path: '/login'
                 });
             });
+    },
+    pageLogin() {
+        router.push({
+            path: '/login'
+        });
     }
 };
 
