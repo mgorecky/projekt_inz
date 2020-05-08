@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Questionnaires from '@/components/Questionnaires'
 import Register from '@/components/Register'
+import Main from '@/components/Main'
 
 Vue.use(Router)
 
@@ -13,8 +14,8 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'HelloWorld',
-            component: HelloWorld
+            name: 'main',
+            component: Main
         },
         {
             path: '/login',

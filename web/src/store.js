@@ -37,7 +37,7 @@ const actions = {
                 localStorage.removeItem('token');
                 commit(types.LOGOUT);
                 router.push({
-                    path: '/login'
+                    path: '/'
                 });
             });
     },
@@ -55,6 +55,9 @@ const actions = {
         Vue.http.post('http://127.0.0.1:8000/api/register', credential)
             .then((response) => response.json())
             .then((result) => {
+                router.push({
+                    path: '/login'
+                });
             });
     }
 };
