@@ -13,7 +13,7 @@ use App\Questionnaire;
 class QuestionnaireController extends ResponseController
 {
     public function index(){
-        $questionaires = Questionnaire::orderBy('end_time', 'asc')->get();
+        $questionaires = Questionnaire::orderBy('end_time', 'desc')->get();
         $completedQuestionaires = UserAnswers::where('user_id', auth()->user()->id)->get();
 
         $result = Array(
