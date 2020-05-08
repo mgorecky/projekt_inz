@@ -27,14 +27,7 @@
         },
         methods: {
             login() {
-                this.$http.post('http://127.0.0.1:8000/api/login', this.credentials)
-                    .then(response => response.json())
-                    .then(result => {
-                        localStorage.setItem('token', result.data.access_token);
-                        this.$router.push({
-                            path: '/questionnaires'
-                        })
-                    })
+                this.$store.dispatch('login', this.credentials);
             }
         }
     }

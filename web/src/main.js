@@ -8,10 +8,11 @@ import bootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import store from './store'
 
-Vue.config.productionTip = false
-Vue.use(vueResource)
-Vue.use(bootstrapVue)
+Vue.config.productionTip = false;
+Vue.use(vueResource);
+Vue.use(bootstrapVue);
 
 Vue.http.interceptors.push((request, next) => {
     if (localStorage.getItem('token')) {
@@ -32,6 +33,7 @@ Vue.http.interceptors.push((request, next) => {
 new Vue({
     el: '#app',
     router,
+    store,
     components: {App},
     template: '<App/>'
 })
