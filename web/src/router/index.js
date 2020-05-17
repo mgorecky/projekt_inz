@@ -9,6 +9,7 @@ import Main from '@/components/Main'
 import FillQuestionnaire from '@/components/FillQuestionnaire'
 import CheckQuestionnaire from '@/components/CheckQuestionnaire'
 import Admin from '@/components/Admin'
+import AdminCheck from '@/components/AdminCheck'
 
 Vue.use(Router)
 
@@ -49,6 +50,11 @@ export default new Router({
             path: '/admin',
             name: 'admin',
             component: Admin
+        },
+        {
+            path: '/admin/check/:id',
+            name: 'adminCheck',
+            component: AdminCheck
         }
     ]
 })

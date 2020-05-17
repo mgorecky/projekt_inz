@@ -14,7 +14,7 @@
                 <td>{{questionnaire.end_time}}</td>
                 <td>
                     <center>
-                        <router-link v-bind:to="'/admin/'+questionnaire.id" class="btn btn-success my-2 my-sm-0">Wyniki</router-link>
+                        <router-link v-bind:to="'/admin/check/'+questionnaire.id" class="btn btn-success my-2 my-sm-0">Wyniki</router-link>
                     </center>
                 </td>
             </tr>

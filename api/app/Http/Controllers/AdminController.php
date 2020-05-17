@@ -44,7 +44,12 @@ class AdminController extends ResponseController
                 'id' => $index,
                 'question' => $quests[$index]->question,
                 'answers' => [],
+                'all' => 0,
             ]);
+
+            $countAll = QuestionnaireAnswers::where('quest_id', $quests[$index]->id)->get();
+            if ($countAll->count())
+                $resultArray['questions'][$index]['all'] = $countAll->count();
 
             $answers = QuestionnaireQuestsAnswers::where('quest_id', $quests[$index]->id)->get();
             if (!$answers->count())
