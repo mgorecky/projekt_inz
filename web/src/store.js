@@ -19,6 +19,13 @@ const getters = {
 };
 
 const actions = {
+    clearLogin({commit}) {
+        localStorage.removeItem('token');
+        commit(types.LOGOUT);
+        router.push({
+            path: '/'
+        });
+    },
     login({commit}, credentials) {
         Vue.http.post('http://127.0.0.1:8000/api/login', credentials)
             .then((response) => response.json())

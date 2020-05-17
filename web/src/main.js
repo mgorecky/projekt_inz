@@ -22,7 +22,7 @@ Vue.http.interceptors.push((request, next) => {
     next(response => {
         console.log(response);
         if (response.status == 400 || response.status == 401 || response.status == 403){
-            this.$store.dispatch('logout');
+            store.dispatch('clearLogin');
         }
     })
 });
