@@ -10,6 +10,7 @@
 
             <div v-if="isLogged">
                 <button v-on:click="logout" class="btn btn-outline-success my-2 my-sm-0">Wyloguj</button>
+                <button v-if="isAdmin" v-on:click="admin" class="btn btn-outline-success my-2 my-sm-0">Admin</button>
             </div>
             <div v-else>
                 <button v-on:click="login" class="btn btn-outline-success my-2 my-sm-0">Zaloguj</button>
@@ -26,7 +27,8 @@
     export default {
         name: 'App',
         computed: mapGetters([
-            'isLogged'
+            'isLogged',
+            'isAdmin'
         ]),
         methods: {
             logout() {
@@ -37,7 +39,10 @@
             },
             register() {
                 this.$store.dispatch('pageRegister');
-            }
+            },
+            admin() {
+                this.$store.dispatch('admin');
+            },
         }
     }
 </script>

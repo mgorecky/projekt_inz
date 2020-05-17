@@ -7,21 +7,26 @@ Vue.use(Vuex);
 
 const types = {
     LOGIN: 'LOGIN',
-    LOGOUT: 'LOGOUT'
+    LOGOUT: 'LOGOUT',
 };
 
 const state = {
-    logged: localStorage.getItem('token')
+    logged: localStorage.getItem('token'),
+    admin: 0
 };
 
 const getters = {
-    isLogged: state => state.logged
+    isLogged: state => state.logged,
+    isAdmin: state => {
+        return state.admin
+    }
 };
 
 const actions = {
     clearLogin({commit}) {
         localStorage.removeItem('token');
         commit(types.LOGOUT);
+        commit('ADMIN', 0);
         router.push({
             path: '/'
         });
@@ -32,6 +37,10 @@ const actions = {
             .then((result) => {
                 localStorage.setItem('token', result.data.access_token);
                 commit(types.LOGIN);
+                if (result.data.role == 1)
+                    commit('ADMIN', 1);
+                else
+                    commit('ADMIN', 0);
                 router.push({
                     path: '/questionnaires'
                 })
@@ -43,6 +52,7 @@ const actions = {
             .then(() => {
                 localStorage.removeItem('token');
                 commit(types.LOGOUT);
+                commit('ADMIN', 0);
                 router.push({
                     path: '/'
                 });
@@ -75,7 +85,12 @@ const actions = {
                     path: '/questionnaires'
                 })
             });
-    }
+    },
+    admin() {
+        router.push({
+            path: '/admin'
+        });
+    },
 };
 
 const mutations = {
@@ -84,6 +99,10 @@ const mutations = {
     },
     [types.LOGOUT](state) {
         state.logged = 0;
+    },
+
+    ADMIN(state, role) {
+        state.admin = role
     }
 };
 
