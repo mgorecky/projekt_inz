@@ -9,7 +9,7 @@
         <div class="list-group">
             <div v-for="question in this.data['questions']">
                 <div class="list-group-item list-group-item-dark bg-dark text-light">
-                    {{question.question}} {{question.id}}
+                    {{question.question}}
                 </div>
                 <div class="list-group-item list-group-item-light">
                     <div v-for="answer in question.answers" class="custom-control custom-radio">

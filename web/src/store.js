@@ -12,7 +12,7 @@ const types = {
 
 const state = {
     logged: localStorage.getItem('token'),
-    admin: 0
+    admin: parseInt(localStorage.getItem('role'))
 };
 
 const getters = {
@@ -36,6 +36,7 @@ const actions = {
             .then((response) => response.json())
             .then((result) => {
                 localStorage.setItem('token', result.data.access_token);
+                localStorage.setItem('role', result.data.role);
                 commit(types.LOGIN);
                 if (result.data.role == 1)
                     commit('ADMIN', 1);
@@ -51,6 +52,7 @@ const actions = {
             .then((response) => response.json())
             .then(() => {
                 localStorage.removeItem('token');
+                localStorage.removeItem('role');
                 commit(types.LOGOUT);
                 commit('ADMIN', 0);
                 router.push({
