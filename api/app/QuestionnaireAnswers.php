@@ -12,7 +12,7 @@ class QuestionnaireAnswers extends Model
      * @var array
      */
     protected $fillable = [
-        'questionnaire_id', 'quest_id', 'quest_answers_id'
+        'questionnaire_id', 'quest_id', 'quest_answers_id', 'hash'
     ];
 
     /**

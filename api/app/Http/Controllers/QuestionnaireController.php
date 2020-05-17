@@ -100,6 +100,7 @@ class QuestionnaireController extends ResponseController
                 "questionnaire_id" => $data['id'],
                 "quest_id" => $answer['quest_id'],
                 "quest_answers_id" => $answer['answer_id'],
+                "hash" => bcrypt(auth()->user()->GetForHash())
             ]);
         }
 

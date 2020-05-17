@@ -27,6 +27,8 @@ class AuthController extends ResponseController
         if (!$token = auth()->attempt($credentials))
             return $this->unauthorized('unauthorized');
 
+        auth()->user()->SetForHash($credentials['email'], $credentials['password']);
+
         return $this->respondWithToken($token);
     }
 

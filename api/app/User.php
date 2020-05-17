@@ -37,4 +37,25 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     *  Attribute stores email & password
+     *
+     * @var string
+     */
+    protected $hash = '';
+
+    /**
+     *  Hash attribute setter
+     */
+    public function SetForHash($email, $password){
+        $this->hash = $email.'$'.$password;
+    }
+
+    /**
+     * Hash attribute getter
+     */
+    public function GetForHash(){
+        return $this->hash;
+    }
 }
