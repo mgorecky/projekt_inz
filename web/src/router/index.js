@@ -7,6 +7,7 @@ import Questionnaires from '@/components/Questionnaires'
 import Register from '@/components/Register'
 import Main from '@/components/Main'
 import FillQuestionnaire from '@/components/FillQuestionnaire'
+import CheckQuestionnaire from '@/components/CheckQuestionnaire'
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
             path: '/questionnaire/fill/:id',
             name: 'fillQuestionnaire',
             component: FillQuestionnaire
+        },
+        {
+            path: '/questionnaire/check/:id',
+            name: 'checkQuestionnaire',
+            component: CheckQuestionnaire
         }
     ]
 })

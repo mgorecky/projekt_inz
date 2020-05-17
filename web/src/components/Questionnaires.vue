@@ -29,10 +29,10 @@
                 <td>
                     <center>
                         <div v-if="CanCheck(questionnaire.id)">
-                            <button class="btn btn-danger my-2 my-sm-0">Brak odpowiedzi</button>
+                            <router-link v-bind:to="'/questionnaire/check/'+questionnaire.id" class="btn btn-success my-2 my-sm-0">Sprawdź odpowiedzi</router-link>
                         </div>
                         <div v-else>
-                            <button v-on:click="CheckQuestionnaire(questionnaire.id)" class="btn btn-success my-2 my-sm-0">Sprawdź odpowiedzi</button>
+                            <button class="btn btn-danger my-2 my-sm-0">Brak odpowiedzi</button>
                         </div>
                     </center>
                 </td>
@@ -81,9 +81,9 @@
             CanCheck(id) {
                 for (var i = 0; i < this.data.userAnswers.length; ++i){
                     if (this.data.userAnswers[i].questionaire_id == id)
-                        return false;
+                        return true;
                 }
-                return true;
+                return false;
             }
         },
         created: function () {
