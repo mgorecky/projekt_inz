@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 use App\Questionnaire;
 
+use Illuminate\Support\Facades\Hash;
+
 class QuestionnaireController extends ResponseController
 {
     public function index(){
@@ -105,5 +107,60 @@ class QuestionnaireController extends ResponseController
         }
 
         return $this->success('answers saved');
+    }
+
+    public function check($questionnaireID){
+        $questionnaire = Questionnaire::find($questionnaireID);
+        if (!$questionnaire)
+            return $this->notFound('unknown questionnaire id');
+
+        $resultArray = [
+            'main-information' => $questionnaire,
+            'questions' => []
+        ];
+
+        $quests = QuestionnaireQuests::where('questionnaire_id', $questionnaireID)->get();
+        if (!$quests->count())
+            return $this->badRequest('no quests');
+
+        for ($index = 0; $index < $quests->count(); ++$index){
+            array_push($resultArray['questions'], [
+                'id' => $quests[$index]->id,
+                'question' => $quests[$index]->question,
+                'answers' => [],
+                'user_answer' => 0,
+            ]);
+
+            $answers = QuestionnaireQuestsAnswers::where('quest_id', $quests[$index]->id)->get();
+            if (!$answers->count())
+                return $this->badRequest('no answers');
+
+            foreach ($answers as $answer) {
+                array_push($resultArray['questions'][$index]['answers'], [
+                    "answer_id" => $answer->id,
+                    "value" => $answer->value,
+                ]);
+            }
+
+            $UsersAnswers = QuestionnaireAnswers::where([
+                'questionnaire_id' => $questionnaire->id,
+                'quest_id' => $quests[$index]->id,
+            ])->get();
+            if (!$UsersAnswers->count())
+                return $this->badRequest('no answers by users');
+
+            $IsOk = false;
+            foreach ($UsersAnswers as $UserAnswer){
+                if (Hash::check(auth()->user()->GetForHash(), $UserAnswer->hash)){
+                    $IsOk = true;
+                    $resultArray['questions'][$index]['user_answer'] = $UserAnswer->quest_answers_id;
+                    break;
+                }
+            }
+            if ($IsOk == false)
+                return $this->badRequest('no answer by user');
+        }
+
+        return $this->success($resultArray);
     }
 }

@@ -43,7 +43,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var string
      */
-    protected $hash = '';
+    protected $hash;
 
     /**
      *  Hash attribute setter
