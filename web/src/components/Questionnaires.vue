@@ -29,7 +29,8 @@
                 <td>
                     <center>
                         <div v-if="CanCheck(questionnaire.id)">
-                            <router-link v-bind:to="'/questionnaire/check/'+questionnaire.id" class="btn btn-success my-2 my-sm-0">Sprawdź odpowiedzi</router-link>
+                            <input type="text" class="form-control" v-model="data['keys'][questionnaire.id]"  :id="'area-'+questionnaire.id" rows="1"><br/>
+                            <router-link v-bind:to="'/questionnaire/check/'+questionnaire.id+'/'+data['keys'][questionnaire.id]" class="btn btn-success my-2 my-sm-0">Sprawdź odpowiedzi</router-link>
                         </div>
                         <div v-else>
                             <button class="btn btn-danger my-2 my-sm-0">Brak odpowiedzi</button>
@@ -76,7 +77,9 @@
                 return true;
             },
             CheckQuestionnaire(id) {
-
+                router.push({
+                    path: 'questionnaires/check/' + id + '/JDJ5JDEwJGFkS2xPZGJFbVdVUWxUaGg0dnJ5aGVUMEw5T1E1UjlCREpIRUJ4ZnVoYUZBNU1Bc3hNQWNL'
+                })
             },
             CanCheck(id) {
                 for (var i = 0; i < this.data.userAnswers.length; ++i){

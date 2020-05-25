@@ -20,8 +20,7 @@ Route::group([
         'questionnaires' => 'QuestionnaireController',
     ]);
 
-    Route::get('questionnaires/{questionnaireID}/check', 'QuestionnaireController@check');
-
+    Route::get('questionnaires/{questionnaireID}/check/{key}', 'QuestionnaireController@check');
     Route::get('logout', 'AuthController@logout');
 });
 

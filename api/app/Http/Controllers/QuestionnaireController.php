@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Questionnaire;
 
 use Illuminate\Support\Facades\Hash;
+use Mail;
 
 class QuestionnaireController extends ResponseController
 {
@@ -21,6 +22,7 @@ class QuestionnaireController extends ResponseController
         $result = Array(
             'questionaires'  => $questionaires,
             'userAnswers' => [],
+            'keys' => [],
         );
 
         foreach($completedQuestionaires as $answer) {
@@ -97,31 +99,59 @@ class QuestionnaireController extends ResponseController
             "questionnaire_id" => $data['id']
         ]);
 
+        $AnswersHash = "";
+        foreach ($data['answers'] as $answer) {
+            $AnswersHash .= $answer['answer_id'] . '#';
+        }
+        $AnswersHash .= auth()->user()->GetForHash();
+        $AnswersHash = bcrypt($AnswersHash);
+
+        $MailData = array('hash' => base64_encode($AnswersHash), 'name' => auth()->user()->first_name, 'last_name' => auth()->user()->last_name);
+        Mail::send(['text'=>'mail'], $MailData, function($message) {
+            $message->to('endymionmpc@gmail.com', auth()->user()->first_name .' '. auth()->user()->last_name)->subject
+            ('Token do odpowiedzi');
+            $message->from('gorecki.mke@gmail.com', 'Mikołaj Górecki');
+        });
+
         foreach ($data['answers'] as $answer) {
             QuestionnaireAnswers::create([
                 "questionnaire_id" => $data['id'],
                 "quest_id" => $answer['quest_id'],
                 "quest_answers_id" => $answer['answer_id'],
-                "hash" => bcrypt(auth()->user()->GetForHash())
+                "hash" => $AnswersHash
             ]);
         }
 
         return $this->success('answers saved');
     }
 
-    public function check($questionnaireID){
+    public function check($questionnaireID, $key){
+        $key = base64_decode($key);
+
         $questionnaire = Questionnaire::find($questionnaireID);
         if (!$questionnaire)
             return $this->notFound('unknown questionnaire id');
 
         $resultArray = [
             'main-information' => $questionnaire,
-            'questions' => []
+            'questions' => [],
+            'status' => 2,
         ];
 
         $quests = QuestionnaireQuests::where('questionnaire_id', $questionnaireID)->get();
         if (!$quests->count())
             return $this->badRequest('no quests');
+
+        $AnswersHash = '';
+
+        $UsersAnswers = QuestionnaireAnswers::where([
+            'hash' => $key,
+        ])->get();
+
+        if (!$UsersAnswers->count()) {
+            $resultArray['status'] = 1;
+            return $this->success($resultArray);
+        }
 
         for ($index = 0; $index < $quests->count(); ++$index){
             array_push($resultArray['questions'], [
@@ -142,24 +172,17 @@ class QuestionnaireController extends ResponseController
                 ]);
             }
 
-            $UsersAnswers = QuestionnaireAnswers::where([
-                'questionnaire_id' => $questionnaire->id,
-                'quest_id' => $quests[$index]->id,
-            ])->get();
-            if (!$UsersAnswers->count())
-                return $this->badRequest('no answers by users');
-
-            $IsOk = false;
             foreach ($UsersAnswers as $UserAnswer){
-                if (Hash::check(auth()->user()->GetForHash(), $UserAnswer->hash)){
-                    $IsOk = true;
+                if ($UserAnswer->quest_id == $resultArray['questions'][$index]['id']){
                     $resultArray['questions'][$index]['user_answer'] = $UserAnswer->quest_answers_id;
-                    break;
+                    $AnswersHash .= $resultArray['questions'][$index]['user_answer'] . '#';
                 }
             }
-            if ($IsOk == false)
-                return $this->badRequest('no answer by user');
         }
+        $AnswersHash .= auth()->user()->GetForHash();
+
+        if (Hash::check($AnswersHash, $key))
+            $resultArray['status'] = 0;
 
         return $this->success($resultArray);
     }

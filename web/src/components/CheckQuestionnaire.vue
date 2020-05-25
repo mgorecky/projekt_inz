@@ -6,7 +6,7 @@
             </h1>
         </div>
         <hr>
-        <div class="list-group">
+        <div v-if="this.data['status'] == 0" class="list-group">
             <div v-for="question in this.data['questions']">
                 <div class="list-group-item list-group-item-dark bg-dark text-light">
                     {{question.question}}
@@ -20,6 +20,12 @@
                 </div>
                 <br/> <br/>
             </div>
+        </div>
+        <div v-else-if="this.data['status'] == 1" class="alert alert-danger" role="alert">
+            Nie znaleziono odpowiedzi przypisanych do tego tokenu.
+        </div>
+        <div v-else class="alert alert-danger" role="alert">
+            Odpowiedzi w Twojej ankiecie zostały zmodyfikowane!
         </div>
         <center>
             <button v-on:click="back()" class="btn btn-success my-2 my-sm-0">Powrót</button>
@@ -39,12 +45,13 @@
                         id : 111,
                     },
                     'questions' : {},
+                    'status' : 0,
                 },
             }
         },
         methods: {
-            fetchQuestionnaire(id){
-                this.$http.get('http://127.0.0.1:8000/api/questionnaires/'+id+'/check')
+            fetchQuestionnaire(id, key){
+                this.$http.get('http://127.0.0.1:8000/api/questionnaires/'+id+'/check/'+key)
                     .then(response => response.json())
                     .then(result => {
                         this.data = result.data;
@@ -57,7 +64,8 @@
             }
         },
         created: function () {
-            this.fetchQuestionnaire(this.$route.params.id);
+            this.fetchQuestionnaire(this.$route.params.id, this.$route.params.key);
+            console.log('asd');
         }
     }
 </script>

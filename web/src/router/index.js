@@ -42,7 +42,7 @@ export default new Router({
             component: FillQuestionnaire
         },
         {
-            path: '/questionnaire/check/:id',
+            path: '/questionnaire/check/:id/:key',
             name: 'checkQuestionnaire',
             component: CheckQuestionnaire
         },
