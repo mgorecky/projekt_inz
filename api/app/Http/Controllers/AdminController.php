@@ -9,8 +9,34 @@ use App\QuestionnaireQuestsAnswers;
 use App\UserAnswers;
 use Illuminate\Http\Request;
 
+
+/**
+ * @group AdminController
+ * APIs for front page actions with Questionnaires by Admin
+ */
 class AdminController extends ResponseController
 {
+    /**
+     * Fetch all Questionnaires
+     * Fetch all Questionnaires and informations which of them has been completed by user
+     * @authenticated
+     *
+     * @response {
+     *        "status": "success",
+     *        "code": 200,
+     *        "message": "OK",
+     *        "data": {
+     *            "questionaires": [
+     *                {
+     *                    "id": 11,
+     *                    "title": "Testowa ankieta nr 1",
+     *                    "start_time": "2020-05-30 00:00:00",
+     *                    "end_time": "2020-06-16 00:00:00"
+     *                }
+     *            ]
+     *        }
+     * }
+     */
     public function index(){
         $questionaires = Questionnaire::orderBy('end_time', 'asc')->get();
 
@@ -21,6 +47,110 @@ class AdminController extends ResponseController
         return $this->success($result);
     }
 
+    /**
+     * Provide Questionnaire results
+     * Provide all inormation and vote results about Questionnaire with given ID
+     * @urlParam questionnaireID required Questionnaire's ID which informations should be provided. Example: 11
+     * @authenticated
+     *
+     * @response {
+     * "status": "success",
+     * "code": 200,
+     * "message": "OK",
+     * "data": {
+     * "main-information": {
+     * "id": 11,
+     * "title": "Testowa ankieta nr 1",
+     * "start_time": "2020-05-30 00:00:00",
+     * "end_time": "2020-06-16 00:00:00"
+     * },
+     * "questions": [
+     * {
+     * "id": 0,
+     * "question": "Czy strona działa prawidłowo?",
+     * "answers": [
+     * {
+     * "answer_id": 42,
+     * "value": "Tak",
+     * "count": 1
+     * },
+     * {
+     * "answer_id": 43,
+     * "value": "Nie",
+     * "count": 1
+     * }
+     * ]
+     * },
+     * {
+     * "id": 17,
+     * "question": "Wybierz uczelnię na jakiej się uczysz",
+     * "answers": [
+     * {
+     * "answer_id": 44,
+     * "value": "Uniwersytet Pedagogiczny w Krakowie",
+     * "count": 0
+     * },
+     * {
+     * "answer_id": 45,
+     * "value": "Uniwersytet Gdański",
+     * "count": 0
+     * },
+     * {
+     * "answer_id": 46,
+     * "value": "Politechnika Wrocławska",
+     * "count": 1
+     * },
+     * {
+     * "answer_id": 47,
+     * "value": "Żadne z powyższych",
+     * "count": 1
+     * }
+     * ]
+     * },
+     * {
+     * "id": 18,
+     * "question": "Czy pochodzisz z Krakowa?",
+     * "answers": [
+     * {
+     * "answer_id": 48,
+     * "value": "Tak",
+     * "count": 1
+     * },
+     * {
+     * "answer_id": 49,
+     * "value": "Nie",
+     * "count": 1
+     * }
+     * ]
+     * }
+     * ]
+     * }
+     * }
+     *
+     * @response 404 {
+     * "status": "Not Found",
+     * "status_code": 404,
+     * "message": "unknown questionnaire id"
+     * }
+     *
+     * @response 404 {
+     * "status": "Not Found",
+     * "status_code": 404,
+     * "message": "questrionnaire without answers"
+     * }
+     *
+     * @response 400 {
+     * "status": "bad request",
+     * "status_code": 400,
+     * "message": "no quests"
+     * }
+     *
+     * @response 400 {
+     * "status": "bad request",
+     * "status_code": 400,
+     * "message": "no answers"
+     * }
+     */
     public function show($questionnaireID){
         $questionnaire = Questionnaire::find($questionnaireID);
         if (!$questionnaire)
@@ -72,6 +202,23 @@ class AdminController extends ResponseController
         return $this->success($resultArray);
     }
 
+    /**
+     * Save Questionnaire information
+     * Save Questionnaire information after create by Admin
+     * @bodyParam title string required Questionnaire's title. Example: Testowa ankieta
+     * @bodyParam start_time string required Questionnaire's start time - mysql datetime format. Example: 2020-05-30 00:00:00
+     * @bodyParam end_time string required Questionnaire's start time - mysql datetime format. Example: 2020-06-16 00:00:00
+     * @bodyParam questions array required Questionnaire's details. Example: [{"question":"Pytanie nr 1","answers":["Odpowiedz 1", "Odpowiedz 2", "Odpowiedz3"]},{"question":"Pytanie nr 1","answers":["Odpowiedz 1", "Odpowiedz 2", "Odpowiedz3"]}]
+     * @authenticated
+     *
+     * @response 200 {
+     * "status": "success",
+     * "status_code": 200,
+     * "message": "OK",
+     * "data": "answers saved"
+     * }
+     *
+     */
     public function store(Request $request){
         $data = json_decode($request->getContent(), true);
 

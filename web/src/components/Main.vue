@@ -15,7 +15,7 @@
                         Podstawowe informacje o systemie
                     </a>
                     <a href="#" class="list-group-item list-group-item-action disabled">Wszystkie dane są przechowywane w bazie danych z wykorzystaniem serwera <b>MariaDB</b> w wersji <b>10.5.2</b></a>
-                    <a href="#" class="list-group-item list-group-item-action disabled">Strona aplikacyjna została napisana z wykorzystaniem <b>Vue.js</b>, API aplikacji zostało napisane z wykorzystaniem <b>Laravel 5.5</b> oraz <b>PHP 7.4.4</b></a>
+                    <a href="#" class="list-group-item list-group-item-action disabled">Strona aplikacyjna została napisana z wykorzystaniem <b>Vue.js</b>, API aplikacji zostało napisane z wykorzystaniem <b>Laravel 5.8</b> oraz <b>PHP 7.4.4</b></a>
                     <a href="#" class="list-group-item list-group-item-action disabled">Reprezentacja danych w bazie danych uniemożliwia powiązanie odpowiedzi z użytkownikiem</a>
                     <a href="#" class="list-group-item list-group-item-action disabled">Użytkownik ma możliwość sprawdzenia czy wypełnił ankietę oraz sprawdzić swoje odpowiedzi w celu weryfikacji, czy ankieta nie została zmanipulowana</a>
                     <a href="#" class="list-group-item list-group-item-action disabled">Aplikacja wykorzystuje <b>boostrap-vue 2.13.0</b> oraz <b>vuex 3.3.0</b></a>

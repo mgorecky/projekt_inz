@@ -1,0 +1,363 @@
+{
+    "variables": [],
+    "info": {
+        "name": "Laravel API",
+        "_postman_id": "ff5ca9ff-b1e8-4c72-9619-b3e443e0c81b",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "AdminController",
+            "description": "APIs for front page actions with Questionnaires by Admin",
+            "item": [
+                {
+                    "name": "Fetch all Questionnaires\nFetch all Questionnaires and informations which of them has been completed by user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/admin",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Save Questionnaire information\nSave Questionnaire information after create by Admin",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/admin",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Testowa ankieta\",\n    \"start_time\": \"2020-05-30 00:00:00\",\n    \"end_time\": \"2020-06-16 00:00:00\",\n    \"questions\": \"[{\\\"question\\\":\\\"Pytanie nr 1\\\",\\\"answers\\\":[\\\"Odpowiedz 1\\\", \\\"Odpowiedz 2\\\", \\\"Odpowiedz3\\\"]},{\\\"question\\\":\\\"Pytanie nr 1\\\",\\\"answers\\\":[\\\"Odpowiedz 1\\\", \\\"Odpowiedz 2\\\", \\\"Odpowiedz3\\\"]}]\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Provide Questionnaire results\nProvide all inormation and vote results about Questionnaire with given ID",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/admin\/:admin",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "AuthController",
+            "description": "APIs for front page actions with Auth actions.",
+            "item": [
+                {
+                    "name": "Logout",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/logout",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Register account",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/register",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"mikolaj.gorecki@student.up.krakow.pl\",\n    \"password\": \"P@$$w0rd\",\n    \"first_name\": \"Miko\\u0142aj\",\n    \"last_name\": \"G\\u00f3recki\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Login into website",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/login",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"mikolaj.gorecki@student.up.krakow.pl\",\n    \"password\": \"P@$$w0rd\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "QuestionnaireController",
+            "description": "APIs for front page actions with Questionnaires by Users",
+            "item": [
+                {
+                    "name": "Fetch all Questionnaires\nFetch all Questionnaires and informations which of them has been completed by user",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/questionnaires",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Save user answers\nSave user's answers, generate token and send token via email used in register",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/questionnaires",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 11,\n    \"answers\": \"[{\\\"quest_id\\\":0,\\\"answer_id\\\":2},{\\\"quest_id\\\":1,\\\"answer_id\\\":5},{\\\"quest_id\\\":2,\\\"answer_id\\\":8}]\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Provide Questionnaire information\nProvide all inormation about Questionnaire with given ID",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/questionnaires\/:questionnaire",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Check user's answers\nCheck user's answers and provide information if our answers has been modified and not match with answers in token",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/questionnaires\/:questionnaireID\/check\/:key",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "questionnaireID",
+                                    "key": "questionnaireID",
+                                    "value": "11",
+                                    "description": "Questionnaire's ID which informations should be provided."
+                                },
+                                {
+                                    "id": "key",
+                                    "key": "key",
+                                    "value": "JDJ5JDEwJDYwR204Q29yUGdobkNWcVF6QVJBSGVEYjBNLmxaREpnVjN2dW9NWFlzUDdmdkRXcTd1Z05x",
+                                    "description": "Token generated when saving user's answers."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -26,7 +26,7 @@ class ResponseController extends Controller
     protected function unauthorized($message, $code = 401){
         return response()->json([
             'status' => 'unauthorized',
-            '$code' => $code,
+            'code' => $code,
             'message' => $message ? $message : 'unauthorized',
         ], isset(JsonResponse::$statusTexts[$code]) ? $code : JsonResponse::HTTP_UNAUTHORIZED);
     }
@@ -34,7 +34,7 @@ class ResponseController extends Controller
     protected function forbidden($message, $code = 403){
         return response()->json([
             'status' => 'forbidden',
-            '$code' => $code,
+            'code' => $code,
             'message' => $message ? $message : 'forbidden',
         ], isset(JsonResponse::$statusTexts[$code]) ? $code : JsonResponse::HTTP_FORBIDDEN);
     }
