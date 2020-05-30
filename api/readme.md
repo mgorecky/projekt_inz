@@ -1,53 +1,1006 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+---
+title: API Reference
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+language_tabs:
+- bash
+- javascript
 
-## About Laravel
+includes:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+search: true
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+toc_footers:
+- <a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a>
+---
+<!-- START_INFO -->
+# Info
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Welcome to the generated 'anonymous questionnaire' API.<br/>
+author: Mikołaj Górecki<br/>
+Repository: https://github.com/mgorecky/projekt_inz/tree/master/api
 
-## Learning Laravel
+<!-- END_INFO -->
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+#AdminController
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+APIs for front page actions with Questionnaires by Admin
+<!-- START_99a3c4dbe1d3c6031b4d1ac151ce6a20 -->
+## Fetch all Questionnaires
+Fetch all Questionnaires and informations which of them has been completed by user
 
-## Laravel Sponsors
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+```bash
+curl -X GET \
+    -G "http://localhost/api/admin" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+```
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
+```javascript
+const url = new URL(
+    "http://localhost/api/admin"
+);
 
-## Contributing
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+> Example response (200):
 
-## License
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "questionaires": [
+            {
+                "id": 11,
+                "title": "Testowa ankieta nr 1",
+                "start_time": "2020-05-30 00:00:00",
+                "end_time": "2020-06-16 00:00:00"
+            }
+        ]
+    }
+}
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+### HTTP Request
+`GET api/admin`
+
+
+<!-- END_99a3c4dbe1d3c6031b4d1ac151ce6a20 -->
+
+<!-- START_0c80d1797fb2859c948ec9ee2206237a -->
+## Save Questionnaire information
+Save Questionnaire information after create by Admin
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/admin" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns" \
+    -d '{"title":"Testowa ankieta","start_time":"2020-05-30 00:00:00","end_time":"2020-06-16 00:00:00","questions":"[{\"question\":\"Pytanie nr 1\",\"answers\":[\"Odpowiedz 1\", \"Odpowiedz 2\", \"Odpowiedz3\"]},{\"question\":\"Pytanie nr 1\",\"answers\":[\"Odpowiedz 1\", \"Odpowiedz 2\", \"Odpowiedz3\"]}]"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/admin"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+let body = {
+    "title": "Testowa ankieta",
+    "start_time": "2020-05-30 00:00:00",
+    "end_time": "2020-06-16 00:00:00",
+    "questions": "[{\"question\":\"Pytanie nr 1\",\"answers\":[\"Odpowiedz 1\", \"Odpowiedz 2\", \"Odpowiedz3\"]},{\"question\":\"Pytanie nr 1\",\"answers\":[\"Odpowiedz 1\", \"Odpowiedz 2\", \"Odpowiedz3\"]}]"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "OK",
+    "data": "answers saved"
+}
+```
+
+### HTTP Request
+`POST api/admin`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `title` | string |  required  | Questionnaire's title.
+        `start_time` | string |  required  | Questionnaire's start time - mysql datetime format.
+        `end_time` | string |  required  | Questionnaire's start time - mysql datetime format.
+        `questions` | array |  required  | Questionnaire's details.
+    
+<!-- END_0c80d1797fb2859c948ec9ee2206237a -->
+
+<!-- START_78d527762967c4e0148c18955586ca0b -->
+## Provide Questionnaire results
+Provide all inormation and vote results about Questionnaire with given ID
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/admin/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/admin/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "main-information": {
+            "id": 11,
+            "title": "Testowa ankieta nr 1",
+            "start_time": "2020-05-30 00:00:00",
+            "end_time": "2020-06-16 00:00:00"
+        },
+        "questions": [
+            {
+                "id": 0,
+                "question": "Czy strona działa prawidłowo?",
+                "answers": [
+                    {
+                        "answer_id": 42,
+                        "value": "Tak",
+                        "count": 1
+                    },
+                    {
+                        "answer_id": 43,
+                        "value": "Nie",
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "id": 17,
+                "question": "Wybierz uczelnię na jakiej się uczysz",
+                "answers": [
+                    {
+                        "answer_id": 44,
+                        "value": "Uniwersytet Pedagogiczny w Krakowie",
+                        "count": 0
+                    },
+                    {
+                        "answer_id": 45,
+                        "value": "Uniwersytet Gdański",
+                        "count": 0
+                    },
+                    {
+                        "answer_id": 46,
+                        "value": "Politechnika Wrocławska",
+                        "count": 1
+                    },
+                    {
+                        "answer_id": 47,
+                        "value": "Żadne z powyższych",
+                        "count": 1
+                    }
+                ]
+            },
+            {
+                "id": 18,
+                "question": "Czy pochodzisz z Krakowa?",
+                "answers": [
+                    {
+                        "answer_id": 48,
+                        "value": "Tak",
+                        "count": 1
+                    },
+                    {
+                        "answer_id": 49,
+                        "value": "Nie",
+                        "count": 1
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "Not Found",
+    "status_code": 404,
+    "message": "unknown questionnaire id"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "Not Found",
+    "status_code": 404,
+    "message": "questrionnaire without answers"
+}
+```
+> Example response (400):
+
+```json
+{
+    "status": "bad request",
+    "status_code": 400,
+    "message": "no quests"
+}
+```
+> Example response (400):
+
+```json
+{
+    "status": "bad request",
+    "status_code": 400,
+    "message": "no answers"
+}
+```
+
+### HTTP Request
+`GET api/admin/{admin}`
+
+#### URL Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -------
+    `questionnaireID` |  required  | Questionnaire's ID which informations should be provided.
+
+<!-- END_78d527762967c4e0148c18955586ca0b -->
+
+#AuthController
+
+APIs for front page actions with Auth actions.
+<!-- START_00e7e21641f05de650dbe13f242c6f2c -->
+## Logout
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/logout" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/logout"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": "logged out"
+}
+```
+
+### HTTP Request
+`GET api/logout`
+
+
+<!-- END_00e7e21641f05de650dbe13f242c6f2c -->
+
+<!-- START_d7b7952e7fdddc07c978c9bdaf757acf -->
+## Register account
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/register" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns" \
+    -d '{"email":"mikolaj.gorecki@student.up.krakow.pl","password":"P@$$w0rd","first_name":"Miko\u0142aj","last_name":"G\u00f3recki"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/register"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+let body = {
+    "email": "mikolaj.gorecki@student.up.krakow.pl",
+    "password": "P@$$w0rd",
+    "first_name": "Miko\u0142aj",
+    "last_name": "G\u00f3recki"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "access_token": "GeneratedJWTUserToken",
+        "token_type": "bearer",
+        "expires_in": 180,
+        "role": 2
+    }
+}
+```
+
+### HTTP Request
+`POST api/register`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | email |  required  | User's email.
+        `password` | password |  required  | User's password.
+        `first_name` | email |  required  | User's email.
+        `last_name` | email |  required  | User's email.
+    
+<!-- END_d7b7952e7fdddc07c978c9bdaf757acf -->
+
+<!-- START_c3fa189a6c95ca36ad6ac4791a873d23 -->
+## Login into website
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/login" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns" \
+    -d '{"email":"mikolaj.gorecki@student.up.krakow.pl","password":"P@$$w0rd"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/login"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+let body = {
+    "email": "mikolaj.gorecki@student.up.krakow.pl",
+    "password": "P@$$w0rd"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "access_token": "GeneratedJWTUserToken",
+        "token_type": "bearer",
+        "expires_in": 180,
+        "role": 2
+    }
+}
+```
+> Example response (401):
+
+```json
+{
+    "status": "unauthorized",
+    "code": 401,
+    "message": "unauthorized"
+}
+```
+
+### HTTP Request
+`POST api/login`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `email` | email |  required  | User's email.
+        `password` | password |  required  | User's password.
+    
+<!-- END_c3fa189a6c95ca36ad6ac4791a873d23 -->
+
+#QuestionnaireController
+
+APIs for front page actions with Questionnaires by Users
+<!-- START_67cdf418670112dca5af21f25630b88b -->
+## Fetch all Questionnaires
+Fetch all Questionnaires and informations which of them has been completed by user
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/questionnaires" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/questionnaires"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "questionaires": [
+            {
+                "id": 11,
+                "title": "Testowa ankieta nr 1",
+                "start_time": "2020-05-30 00:00:00",
+                "end_time": "2020-06-16 00:00:00"
+            }
+        ],
+        "userAnswers": [
+            {
+                "questionaire_id": 11,
+                "created_at": "2020-05-30 14:33:56"
+            }
+        ],
+        "keys": []
+    }
+}
+```
+
+### HTTP Request
+`GET api/questionnaires`
+
+
+<!-- END_67cdf418670112dca5af21f25630b88b -->
+
+<!-- START_7c051f0cd48e1929ffc59d0accb91b90 -->
+## Save user answers
+Save user&#039;s answers, generate token and send token via email used in register
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/questionnaires" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns" \
+    -d '{"id":11,"answers":"[{\"quest_id\":0,\"answer_id\":2},{\"quest_id\":1,\"answer_id\":5},{\"quest_id\":2,\"answer_id\":8}]"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/questionnaires"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+let body = {
+    "id": 11,
+    "answers": "[{\"quest_id\":0,\"answer_id\":2},{\"quest_id\":1,\"answer_id\":5},{\"quest_id\":2,\"answer_id\":8}]"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "status_code": 200,
+    "message": "OK",
+    "data": "answers saved"
+}
+```
+> Example response (400):
+
+```json
+{
+    "status": "bad request",
+    "status_code": 400,
+    "message": "unknown questionnaire id"
+}
+```
+> Example response (400):
+
+```json
+{
+    "status": "bad request",
+    "status_code": 400,
+    "message": "question from other questionnaire"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "Not Found",
+    "status_code": 404,
+    "message": "unknown answer id"
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "Not Found",
+    "status_code": 404,
+    "message": "answer from other quest"
+}
+```
+
+### HTTP Request
+`POST api/questionnaires`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `id` | integer |  required  | Questionnaire's ID which user answers.
+        `answers` | array |  required  | User's answers.
+    
+<!-- END_7c051f0cd48e1929ffc59d0accb91b90 -->
+
+<!-- START_b0688023c6ad19a6780df93381d62a93 -->
+## Provide Questionnaire information
+Provide all inormation about Questionnaire with given ID
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/questionnaires/1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/questionnaires/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "main-information": {
+            "id": 11,
+            "title": "Testowa ankieta nr 1",
+            "start_time": "2020-05-30 00:00:00",
+            "end_time": "2020-06-16 00:00:00"
+        },
+        "questions": [
+            {
+                "id": 16,
+                "question": "Czy strona działa prawidłowo?",
+                "answers": [
+                    {
+                        "answer_id": 42,
+                        "value": "Tak"
+                    },
+                    {
+                        "answer_id": 43,
+                        "value": "Nie"
+                    }
+                ]
+            },
+            {
+                "id": 17,
+                "question": "Wybierz uczelnię na jakiej się uczysz",
+                "answers": [
+                    {
+                        "answer_id": 44,
+                        "value": "Uniwersytet Pedagogiczny w Krakowie"
+                    },
+                    {
+                        "answer_id": 45,
+                        "value": "Uniwersytet Gdański"
+                    },
+                    {
+                        "answer_id": 46,
+                        "value": "Politechnika Wrocławska"
+                    },
+                    {
+                        "answer_id": 47,
+                        "value": "Żadne z powyższych"
+                    }
+                ]
+            },
+            {
+                "id": 18,
+                "question": "Czy pochodzisz z Krakowa?",
+                "answers": [
+                    {
+                        "answer_id": 48,
+                        "value": "Tak"
+                    },
+                    {
+                        "answer_id": 49,
+                        "value": "Nie"
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "Not Found",
+    "status_code": 404,
+    "message": "unknown questionnaire id"
+}
+```
+> Example response (400):
+
+```json
+{
+    "status": "bad request",
+    "status_code": 400,
+    "message": "no quests"
+}
+```
+> Example response (400):
+
+```json
+{
+    "status": "bad request",
+    "status_code": 400,
+    "message": "no answers"
+}
+```
+
+### HTTP Request
+`GET api/questionnaires/{questionnaire}`
+
+#### URL Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -------
+    `questionnaireID` |  required  | Questionnaire's ID which informations should be provided.
+
+<!-- END_b0688023c6ad19a6780df93381d62a93 -->
+
+<!-- START_f63487f7465adde0f9d9c487ad24aad0 -->
+## Check user&#039;s answers
+Check user&#039;s answers and provide information if our answers has been modified and not match with answers in token
+
+<br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small>
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/questionnaires/11/check/JDJ5JDEwJDYwR204Q29yUGdobkNWcVF6QVJBSGVEYjBNLmxaREpnVjN2dW9NWFlzUDdmdkRXcTd1Z05x" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/questionnaires/11/check/JDJ5JDEwJDYwR204Q29yUGdobkNWcVF6QVJBSGVEYjBNLmxaREpnVjN2dW9NWFlzUDdmdkRXcTd1Z05x"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTU5MDg3MDgzMCwiZXhwIjoxNTkwODc4MDMwLCJuYmYiOjE1OTA4NzA4MzAsImp0aSI6IkFVNVlURmV5U1p4ZWhFZ3MiLCJzdWIiOjE3LCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.e73-Xm_0CSAK5mbfc6UtFowa1TPuFwrU5Jg3P9w9Qns",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 11,
+        "title": "Testowa ankieta nr 1",
+        "start_time": "2020-05-30 00:00:00",
+        "end_time": "2020-06-16 00:00:00",
+        "questions": [
+            {
+                "id": 16,
+                "question": "Czy strona działa prawidłowo?",
+                "answers": [
+                    {
+                        "answer_id": 42,
+                        "value": "Tak"
+                    },
+                    {
+                        "answer_id": 43,
+                        "value": "Nie"
+                    }
+                ],
+                "user_answer": 43
+            },
+            {
+                "id": 17,
+                "question": "Wybierz uczelnię na jakiej się uczysz",
+                "answers": [
+                    {
+                        "answer_id": 44,
+                        "value": "Uniwersytet Pedagogiczny w Krakowie"
+                    },
+                    {
+                        "answer_id": 45,
+                        "value": "Uniwersytet Gdański"
+                    },
+                    {
+                        "answer_id": 46,
+                        "value": "Politechnika Wrocławska"
+                    },
+                    {
+                        "answer_id": 47,
+                        "value": "Żadne z powyższych"
+                    }
+                ],
+                "user_answer": 47
+            },
+            {
+                "id": 18,
+                "question": "Czy pochodzisz z Krakowa?",
+                "answers": [
+                    {
+                        "answer_id": 48,
+                        "value": "Tak"
+                    },
+                    {
+                        "answer_id": 49,
+                        "value": "Nie"
+                    }
+                ],
+                "user_answer": 49
+            }
+        ],
+        "status": 0
+    }
+}
+```
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 11,
+        "title": "Testowa ankieta nr 1",
+        "start_time": "2020-05-30 00:00:00",
+        "end_time": "2020-06-16 00:00:00",
+        "questions": [],
+        "status": 1
+    }
+}
+```
+> Example response (200):
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 11,
+        "title": "Testowa ankieta nr 1",
+        "start_time": "2020-05-30 00:00:00",
+        "end_time": "2020-06-16 00:00:00",
+        "questions": [],
+        "status": 2
+    }
+}
+```
+> Example response (404):
+
+```json
+{
+    "status": "Not Found",
+    "status_code": 404,
+    "message": "unknown questionnaire id"
+}
+```
+> Example response (400):
+
+```json
+{
+    "status": "bad request",
+    "status_code": 400,
+    "message": "no quests"
+}
+```
+
+### HTTP Request
+`GET api/questionnaires/{questionnaireID}/check/{key}`
+
+#### URL Parameters
+
+Parameter | Status | Description
+--------- | ------- | ------- | -------
+    `questionnaireID` |  required  | Questionnaire's ID which informations should be provided.
+    `key` |  required  | Token generated when saving user's answers.
+
+<!-- END_f63487f7465adde0f9d9c487ad24aad0 -->
+
+
