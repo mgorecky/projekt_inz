@@ -18,7 +18,7 @@ const state = {
 const getters = {
     isLogged: state => state.logged,
     isAdmin: state => {
-        return state.admin
+        return (state.admin == 1)
     }
 };
 
@@ -92,6 +92,15 @@ const actions = {
         router.push({
             path: '/admin'
         });
+    },
+    storequestionnaire({commit}, result) {
+        Vue.http.post('http://127.0.0.1:8000/api/admin', result)
+            .then((response) => response.json())
+            .then((result) => {
+                router.push({
+                    path: '/admin'
+                })
+            });
     },
 };
 

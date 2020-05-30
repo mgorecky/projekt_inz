@@ -108,9 +108,9 @@ class QuestionnaireController extends ResponseController
 
         $MailData = array('hash' => base64_encode($AnswersHash), 'name' => auth()->user()->first_name, 'last_name' => auth()->user()->last_name);
         Mail::send(['text'=>'mail'], $MailData, function($message) {
-            $message->to('endymionmpc@gmail.com', auth()->user()->first_name .' '. auth()->user()->last_name)->subject
+            $message->to(auth()->user()->email, auth()->user()->first_name .' '. auth()->user()->last_name)->subject
             ('Token do odpowiedzi');
-            $message->from('gorecki.mke@gmail.com', 'Mikołaj Górecki');
+            $message->from('gorecki.mke@gmail.com', 'Administrator (Mikołaj Górecki)');
         });
 
         foreach ($data['answers'] as $answer) {

@@ -43,7 +43,7 @@
             admin() {
                 this.$store.dispatch('admin');
             },
-        }
+        },
     }
 </script>
 

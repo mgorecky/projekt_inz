@@ -18,8 +18,10 @@
                     </center>
                 </td>
             </tr>
-
         </table>
+        <center>
+            <router-link v-bind:to="'/admin/create'" class="btn btn-success my-2 my-sm-0">Dodaj ankiete</router-link>
+        </center>
     </div>
 </template>
 
