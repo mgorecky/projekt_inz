@@ -37,7 +37,7 @@
         },
         methods: {
             fetchQuestionnaires() {
-                this.$http.get('http://127.0.0.1:8000/api/admin')
+                this.$http.get('http://api.endymion.pl/api/admin')
                     .then(response => response.json())
                     .then(result => this.data = result.data);
             },

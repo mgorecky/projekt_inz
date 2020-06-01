@@ -32,7 +32,7 @@ const actions = {
         });
     },
     login({commit}, credentials) {
-        Vue.http.post('http://127.0.0.1:8000/api/login', credentials)
+        Vue.http.post('http://api.endymion.pl/api/login', credentials)
             .then((response) => response.json())
             .then((result) => {
                 localStorage.setItem('token', result.data.access_token);
@@ -48,7 +48,7 @@ const actions = {
             });
     },
     logout({commit}) {
-        Vue.http.get('http://127.0.0.1:8000/api/logout')
+        Vue.http.get('http://api.endymion.pl/api/logout')
             .then((response) => response.json())
             .then(() => {
                 localStorage.removeItem('token');
@@ -71,7 +71,7 @@ const actions = {
         });
     },
     register({commit}, credential) {
-        Vue.http.post('http://127.0.0.1:8000/api/register', credential)
+        Vue.http.post('http://api.endymion.pl/api/register', credential)
             .then((response) => response.json())
             .then((result) => {
                 router.push({
@@ -80,7 +80,7 @@ const actions = {
             });
     },
     fillquestionnaire({commit}, result) {
-        Vue.http.post('http://127.0.0.1:8000/api/questionnaires', result)
+        Vue.http.post('http://api.endymion.pl/api/questionnaires', result)
             .then((response) => response.json())
             .then((result) => {
                 router.push({
@@ -94,7 +94,7 @@ const actions = {
         });
     },
     storequestionnaire({commit}, result) {
-        Vue.http.post('http://127.0.0.1:8000/api/admin', result)
+        Vue.http.post('http://api.endymion.pl/api/admin', result)
             .then((response) => response.json())
             .then((result) => {
                 router.push({

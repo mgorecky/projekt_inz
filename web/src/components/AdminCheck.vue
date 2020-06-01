@@ -42,7 +42,7 @@
         },
         methods: {
             fetchQuestionnaire(id){
-                this.$http.get('http://127.0.0.1:8000/api/admin/'+id)
+                this.$http.get('http://api.endymion.pl/api/admin/'+id)
                     .then(response => response.json())
                     .then(result => {
                         this.data = result.data;
