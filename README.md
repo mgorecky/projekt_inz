@@ -21,6 +21,7 @@ Dane o użytkownikach oraz ankietach są zapisywane w relacyjnej bazie danych <a
 <pre class=" language-bash"><code class="prism  language-bash"><span class="token comment"># install dependencies</span>
 <span class="token function">npm</span> <span class="token function">install</span>
 
+
 <span class="token comment"># serve with hot reload at localhost:8080</span>
 <span class="token function">npm</span> run dev
 
