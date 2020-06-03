@@ -18,9 +18,9 @@ Dane o użytkownikach oraz ankietach są zapisywane w relacyjnej bazie danych <a
 <img src="http://endymion.pl/uploads/files/endy_5b6565e0a1576830da.svg">
 <h2 id="build-setup">Build setup</h2>
 <img src="http://endymion.pl/uploads/images/endy_9849a90aba2c12e3bd.png">
+
 <pre class=" language-bash"><code class="prism  language-bash"><span class="token comment"># install dependencies</span>
 <span class="token function">npm</span> <span class="token function">install</span>
-
 
 <span class="token comment"># serve with hot reload at localhost:8080</span>
 <span class="token function">npm</span> run dev
