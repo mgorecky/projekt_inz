@@ -33,6 +33,7 @@ Dane o użytkownikach oraz ankietach są zapisywane w relacyjnej bazie danych <a
 </code></pre>
 <br>
 <img src="https://laravel.com/assets/img/components/logo-laravel.svg">
+
 <pre class=" language-bash"><code class="prism  language-bash"><span class="token comment"># install dependencies</span>
 composer <span class="token function">install</span>
 
