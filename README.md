@@ -1,8 +1,3 @@
----
-
-
----
-
 <h1 id="projekt-inżynierski-anonimowe-ankietowanie">Projekt inżynierski (Anonimowe ankietowanie)</h1>
 <p>Projekt i implementacja systemu webowego umożliwiającego głosowanie w sposób umożliwiający zachowanie anonimowości użytkowników.</p>
 <p>System zrealizowany w formie aplikacji webowej uwzględnia możliwość oddania głosu w taki sposób, aby realizować następujące funkcje:<br>
